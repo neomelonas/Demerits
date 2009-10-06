@@ -1,30 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
-    <siteMapNode url="" title="Demerits Homepage"  description="">
-        <siteMapNode url="" title="Login"  description="" />
+    <siteMapNode url="Default.aspx" title="Demerits Homepage"  description="">
+        <siteMapNode url="Login.aspx" title="Login"  description="" />
 
       <siteMapNode title="Admin Options" roles="Administrator">
-        <siteMapNode url="SearchDemerits.aspx" title="Search Demerits" />
-        <siteMapNode url="LogDemerits.aspx" title="Log Demerits" />
+        <siteMapNode url="~/Admin/SearchDemerits.aspx" title="Search Demerits" />
+        <siteMapNode url="~/Admin/LogDemerits.aspx" title="Log Demerits" />
       </siteMapNode>
       
       <siteMapNode title="Student Options" roles="Student">
-        <siteMapNode url="SearchDemerits.aspx" title="Search Demerits" />
-        <siteMapNode url="Comments.aspx" title="Comments?" />
+        <siteMapNode url="~/Student/SearchDemerits.aspx" title="Search Demerits" />
+        <siteMapNode url="~/Student/Comments.aspx" title="Comments?" />
       </siteMapNode>
 
       <siteMapNode title="Teacher Options" roles="Teacher">
-        <siteMapNode url="SearchDemerits.aspx" title="Search Demerits" />
-        <siteMapNode url="LogDemerits.aspx" title="Log Demerits" />
+        <siteMapNode url="~/Teacher/SearchDemerits.aspx" title="Search Demerits" />
+        <siteMapNode url="~/Teacher/LogDemerits.aspx" title="Log Demerits" />
       </siteMapNode>
 
       <siteMapNode title="Parent Options" roles="Parent">
-        <siteMapNode url="SearchDemerits.aspx" title="Search Demerits" />
-        <siteMapNode url="Comments.aspx" title="Comments?" />
+        <siteMapNode url="~/Parent/SearchDemerits.aspx" title="Search Demerits" />
+        <siteMapNode url="~/Parent/Comments.aspx" title="Comments?" />
       </siteMapNode>
 
       <siteMapNode title="IT Options" roles="IT">
-        <siteMapNode url="PasswordReset.aspx" title="Password Reset" />
+        <siteMapNode url="~/IT/PasswordReset.aspx" title="Password Reset" />
       </siteMapNode>
 
     </siteMapNode>
