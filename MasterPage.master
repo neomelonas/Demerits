@@ -12,7 +12,8 @@
 <body>
     <form id="form1" runat="server">
     <div id="header">
-        <h1>Demerits v0.1a</h1>
+        <h1>DEMERIT LOG</h1>
+        <h2>--Name of School--</h2>
     </div>
           <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         

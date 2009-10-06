@@ -1,3 +1,4 @@
 ﻿body {background-color:#ffffee;font-family:sans-serif;}
 h1, h2 {color: #336699;font-family: serif;}
-#header{text-align:center;}
+#header{text-align:center;height:100px;}
+#header h1 {margin:auto;}
