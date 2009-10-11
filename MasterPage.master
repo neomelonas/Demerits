@@ -13,7 +13,7 @@
 <body>
     <form id="form1" runat="server">
     <div id="aboveheader"> 
-        <img src="image/booksatangle.png" alt="LOGO:Books at an angle" />
+        <img src="/image/booksatangle.png" alt="LOGO:Books at an angle" />
         <h2>--Name of School--</h2>
         <asp:Menu ID="Menu1" CssClass="menu" runat="server" DataSourceID="SiteMapDataSource1" StaticDisplayLevels="3">
             </asp:Menu>
@@ -29,7 +29,7 @@
 
         </asp:ContentPlaceHolder>
     </div>
-    <asp:sitemapdatasource ID="SiteMapDataSource1" runat="server" SiteMapProvider="Web.sitemap" />
+    <asp:sitemapdatasource ID="SiteMapDataSource1" runat="server" />
     </form>
 </body>
 </html>

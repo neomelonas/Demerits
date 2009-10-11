@@ -1,0 +1,7 @@
+﻿.login {float:right;background-color:#ffffee;}
+.comment{margin-left:200px;position:relative;width:500;}
+.logdem,.searchdem{margin-left:180px;position:relative;padding:5px;}
+.logdem li{list-style:none;}
+.logdem legend{font-size:1.5em;color:#336699;}
+.breadcrumb {margin-left:180px;}
+#demeritlist {margin-left:200px;position:relative;}
