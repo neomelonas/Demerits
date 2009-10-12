@@ -2,15 +2,6 @@ TODO
 =-=-=-=-=-=-=
 
 html
-	-all of pages
-		-ever.
-
-	-student,parent,teacher,admin
-		-view demerit
-	-student, parent
-		-comments
-	-admin,teacher
-		-log demerits
 	-IT
 		-resetpassword
 		
