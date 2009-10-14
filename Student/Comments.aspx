@@ -9,7 +9,7 @@
 <form action method="post" class="comment">
     <fieldset>
         <legend>Comment</legend>
-        <input id="hidden1" type="hidden" name="userID" value="<asp:LoginName ID='LoginName1' runat='server' />" />
+        <input id="hidden1" type="hidden" name="userID" value='<asp:LoginName ID="LoginName1" runat="server" />' />
         <textarea id="TextArea1" cols="80" rows="5"></textarea><br />
         <input id="Submit1" type="submit" value="Submit" />
     </fieldset>

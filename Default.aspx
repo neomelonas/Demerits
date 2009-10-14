@@ -4,7 +4,9 @@
     <link rel="Stylesheet" type="text/css" href="css/StyleSheet.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <asp:Login ID="Login1" runat="server" CssClass="login" >
-    </asp:Login>
+
+  <asp:loginstatus runat="server"></asp:loginstatus>
+  
 </asp:Content>
+
 

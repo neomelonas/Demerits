@@ -12,11 +12,12 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div id="aboveheader"> 
-        <img src="/image/booksatangle.png" alt="LOGO:Books at an angle" />
-        <h2>--Name of School--</h2>
+    <div id="aboveheader">
+        <img src="/demerits/image/booksatangle.png" alt="LOGO:Books at an angle" />
+        <h2>Magic High School</h2>
         <asp:Menu ID="Menu1" CssClass="menu" runat="server" DataSourceID="SiteMapDataSource1" StaticDisplayLevels="3">
             </asp:Menu>
+
     </div>
     <div id="header">
         <h1>DEMERIT LOG</h1>
@@ -26,6 +27,7 @@
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
 
             
+    
 
         </asp:ContentPlaceHolder>
     </div>
