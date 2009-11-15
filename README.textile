@@ -1,7 +1,7 @@
 h1. TODO
 
 
-h2.HTML
+h2. HTML
 
 * Remove "COMMENT" page
 * Recode comment feature
@@ -31,7 +31,7 @@ h2. SQL
 
 h2. OTHER
 
-* N/A
+* Grant "push" access to "GitHub":http://github.com/neomelonas/demerits
 
 h2. Future Thoughts
 
