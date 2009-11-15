@@ -1,33 +1,33 @@
 h1. TODO
----
 
-h2.HTML
 
-	*Remove "COMMENT" page
-	*Recode comment feature
-h2.CSS
+h2. HTML
 
-	*Make things pretty
-h2.C#
+* Remove "COMMENT" page
+* Recode comment feature
+h2. CSS
 
-	*Figure out how to write this shit
-h2.XML
+* Make things pretty
+h2. C#
 
-	*N/A
-h2.DOC
+* Figure out how to write this shit
+h2. XML
 
-	*Update Use Case doc to accurately represent stuff.
-	*Included Demerits ERD.vsd
-	**[ Possible database config ]	
-h2.SQL
+* N/A
+h2. DOC
 
-	*Code database structure
-	*Normalize, etc., said database
+* Update Use Case doc to accurately represent stuff.
+* Included Demerits ERD.vsd
+** [ Possible database config ]	
+h2. SQL
 
-h2.OTHER
+* Code database structure
+* Normalize, etc., said database
 
-	*N/A
+h2. OTHER
 
-h2.Future Thoughts
+* N/A
 
-	*Possibly provide some time of day-end RSS feed, per student, to the parents?
+h2. Future Thoughts
+
+* Possibly provide some time of day-end RSS feed, per student, to the parents?
