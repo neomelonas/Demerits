@@ -28,6 +28,7 @@ h2. SQL
 
 * Code database structure
 * Normalize, etc., said database
+* Create DB dump to run _Demerits_ locally
 
 h2. OTHER
 
