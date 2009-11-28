@@ -6,6 +6,7 @@
 <head runat="server">
     <title>Demerits</title>
     <link rel="stylesheet" href="~/css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="~/css/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
     <link rel="stylesheet" href="~/css/blueprint/print.css" type="text/css" media="print">
     <!--[if lt IE 8]>
         <link rel="stylesheet" href="~/css/blueprint/ie.css" type="text/css" media="screen, projection">
@@ -16,25 +17,32 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div id="aboveheader">
-        <img src="/demerits/image/booksatangle.png" alt="LOGO:Books at an angle" />
-        <h2>Magic High School</h2>
-        <asp:Menu ID="Menu1" CssClass="menu" runat="server" DataSourceID="SiteMapDataSource1" StaticDisplayLevels="3">
-            </asp:Menu>
 
-    </div>
-    <div id="header">
-        <h1>DEMERIT LOG</h1>
-    </div>
-    <div id="content">
-        
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-
+    <div id="container" class="showgrid">
+        <div id="header" class="span-24">
+            <h1>DEMERIT LOG</h1>
+            <h2 class="alt">Magic High School</h2>
+        </div>
+        <div id="nav" class="span-7 column">
+            <img src="/demerits/image/booksatangle.png" height="70" width="70" alt="LOGO:Books at an angle" />
             
-    
+            <asp:Menu ID="Menu1" CssClass="menu" runat="server" DataSourceID="SiteMapDataSource1" StaticDisplayLevels="3">
+                </asp:Menu>
 
-        </asp:ContentPlaceHolder>
-    </div>
+        </div>
+
+        <div id="content" class="span-15 column">
+            
+            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+
+                
+        
+
+            </asp:ContentPlaceHolder>
+        </div>
+        
+     </div>
+    
     <asp:sitemapdatasource ID="SiteMapDataSource1" runat="server" />
     </form>
 </body>

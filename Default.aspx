@@ -5,8 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-  <asp:loginstatus runat="server"></asp:loginstatus>
-  
+  <asp:loginstatus runat="server" CssClass="login"></asp:loginstatus>
 </asp:Content>
 
 
