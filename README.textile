@@ -3,22 +3,24 @@ h1. TODO
 h2. BRANCH: blueprint-Demerits
 
 # HTML
-## Remove "COMMENT" page
-## Recode comment feature
+## -Remove *Comment* page-
+## -Add *Demerit* page for individual demerits-
+## Recode comment feature onto *Demerit* page
 # CSS
+## Start incorporating Blueprint-CSS classes
 ## Make things pretty
 # C#
-## Figure out how to write this shit
+## Learn how to write C#.  Etc.
 # XML
 ## N/A
 # DOC
-## Update Use Case doc to accurately represent stuff.
-## Included Demerits ERD.vsd  [ Possible database config ]	
+## -Update Use Case doc to accurately represent stuff-
+## -Include Demerits ERD.vsd  [ Possible database config ]-
 # SQL
 ## Code database structure
 ## Normalize, etc., said database
 ## Create DB dump to run _Demerits_ locally
 # OTHER
-## Grant "push" access to "GitHub":http://github.com/neomelonas/demerits
+## Get group to fork.
 # Future Thoughts
 ## Possibly provide some time of day-end RSS feed, per student, to the parents?
