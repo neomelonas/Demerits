@@ -5,6 +5,7 @@ h2. BRANCH: blueprint-Demerits
 # HTML
 ## -Remove *Comment* page-
 ## -Add *Demerit* page for individual demerits-
+## Add sparkline/bar chart on Logged in HomePage for Student's Demerits over time
 ## Recode comment feature onto *Demerit* page
 # CSS
 ## Start incorporating Blueprint-CSS classes
