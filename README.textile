@@ -1,27 +1,29 @@
 h1. TODO
 
-h2. BRANCH: blueprint-Demerits
+h2. DEFAULT BRANCH: +master+ -blueprint_Demerits-
 
 # HTML
 ## -Remove *Comment* page-
 ## -Add *Demerit* page for individual demerits-
-## Add sparkline/bar chart on Logged in HomePage for Student's Demerits over time
 ## Recode comment feature onto *Demerit* page
+## Add sparkline/bar chart on Logged in HomePage for Student's Demerits over time
 # CSS
-## Start incorporating Blueprint-CSS classes
+## -Start incorporating *Blueprint CSS* classes-
 ## Make things pretty
 # C#
-## Learn how to write C#.  Etc.
+## TBA
 # XML
-## N/A
+## +Provide an RSS feed, per student, to the parents+
 # DOC
 ## -Update Use Case doc to accurately represent stuff-
-## -Include Demerits ERD.vsd  [ Possible database config ]-
+## -Include Demerits ERD.vsd  [ Possible database config ]- +Lies, included ERM instead+
+## -Fix End Of Term errors-
+## 
 # SQL
 ## Code database structure
 ## Normalize, etc., said database
-## Create DB dump to run _Demerits_ locally
+## Create DB dump to run *Demerits* locally
 # OTHER
-## Get group to fork.
+## -Get group to fork-
 # Future Thoughts
-## Possibly provide some time of day-end RSS feed, per student, to the parents?
+## NA
