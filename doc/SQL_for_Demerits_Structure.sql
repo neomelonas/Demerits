@@ -1,9 +1,9 @@
 --
-use Group1Project2010
+use MIS2010Group1
 --
 /*
 If you need to re-create the database, drop tables in the 
-following order.
+following order, or else superbreaking happens.
 
 drop table StudentDemeritDetention;
 drop table StudentDetention;
@@ -13,12 +13,12 @@ drop table Comments;
 drop table StudentHomeroom;
 drop table Homeroom;
 drop table UserAddress;
-drop table UserPhone;
 drop table Address;
 drop table UserDemerits;
 drop table DemeritList;
 drop table AssignedDemerits;
 drop table Demerits;
+drop table Phone;
 drop table UserRoles;
 drop table UserRole;
 drop table Student;
@@ -29,7 +29,7 @@ drop table DUser;
 */
 --
 create table DUser(
-	userID int not null,
+	userID int identity(1,1) not null,
 	username varchar(8) not null,
 	userPass varchar(45) not null,
 	userFName varchar(15) not null,
@@ -48,15 +48,18 @@ create table Phone(
 );
 --
 create table Address(
-	addressID int not null, 
+	addressID int identity(1,1) not null, 
 	street1 varchar(50) not null, 
 	street2 varchar(50) default null, 
 	city varchar(40) not null, 
-	state enum(
+	state char(2) not null,
+	/*state enum(
 		'AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','MD','MA','MI','MN','MS','MO','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'
-	) not null, 
-	ZIP int(5) not null,
-	constraint pkAddress primary key(addressID)
+	) not null, */
+	ZIP int not null,
+	constraint pkAddress primary key(addressID),
+	constraint ckAddressState CHECK 
+		(state in ('AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','MD','MA','MI','MN','MS','MO','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'))
 );
 --
 create table UserAddress(
@@ -66,11 +69,11 @@ create table UserAddress(
 	constraint fkUAtoUser foreign key (userID) 
 		references DUSer(userID), 
 	constraint fkUAtoAddress foreign key (addressID) 
-		references Addresss(addressID)
+		references Address(addressID)
 );
 --
 create table UserRoles(
-	roleID int not null,
+	roleID int identity(11,1) not null,
 	roleName varchar(20) not null,
 	constraint pkUserRoles primary key(roleID)
 );
@@ -90,14 +93,16 @@ create table Parent(
 	constraint pkParent primary key(parentID),
 	constraint fkParenttoUser foreign key (parentID) 
 		references DUSer(userID)
+		on delete cascade
 );
 --
 create table Student(
 	studentID int not null,
-	parentID, int not null,
+	parentID int not null,
 	constraint pkStudent primary key(studentID),
 	constraint fkStudentToUser foreign key (studentID)	
-		references DUSer(userID), 
+		references DUSer(userID)
+		on delete cascade, 
 	constraint fkStudentToParent foreign key (parentID) 
 		references Parent(parentID)
 );
@@ -129,7 +134,7 @@ create table StudentHomeroom(
 );
 --
 create table AssignedDemerits(
-	assignedDemeritID int not null, 
+	assignedDemeritID int identity(101,1) not null, 
 	demeritDate date not null,
 	demeritTime time not null,
 	teacherID int not null, 
@@ -157,7 +162,7 @@ create table DemeritList(
 create table UserDemerits(
 	assignedDemeritID int not null, 
 	studentID int not null, 
-	constraint pkUserDemerits primary key(assignedDemeriID, userID), 
+	constraint pkUserDemerits primary key(assignedDemeritID, studentID), 
 	constraint fkUserDemeritsToAssignedDemerits foreign key (assignedDemeritID) 
 		references AssignedDemerits(assignedDemeritID), 
 	constraint fkUserDemeritsToStudent foreign key (studentID) 
