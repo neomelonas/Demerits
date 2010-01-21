@@ -19,8 +19,8 @@ drop table DemeritList;
 drop table AssignedDemerits;
 drop table Demerits;
 drop table Phone;
-drop table UserRoles;
 drop table UserRole;
+drop table UserRoles;
 drop table Student;
 drop table Parent;
 drop table Teacher;
@@ -135,8 +135,7 @@ create table StudentHomeroom(
 --
 create table AssignedDemerits(
 	assignedDemeritID int identity(101,1) not null, 
-	demeritDate date not null,
-	demeritTime time not null,
+	adTimestamp smalldatetime not null;
 	teacherID int not null, 
 	constraint pkAssignedDemerits primary key(assignedDemeritID),
 	constraint fkAssignedDemeritsToTeacher foreign key (teacherID) 
@@ -173,21 +172,12 @@ create table Comments(
 	commentID int not null,
 	commentDesc text not null,
 	assignedDemeritID int not null, 
+	commentTimestamp smalldatetime not null,
 	commentLink int not null, 
 	constraint pkComments primary key(commentID),
 	constraint fkCommentsToAssignedDemerits foreign key (assignedDemeritID) 
 		references AssignedDemerits(assignedDemeritID), 
 	constraint fkCommentsToComments foreign key (commentLink) 
-		references Comments(commentID)
-);
---
-create table UserComments(
-	userID int not null, 
-	commentID int not null, 
-	constraint pkUserComments primary key(userID, commentID), 
-	constraint fkUserCommentsToUser foreign key (userID)
-		references DUSer(userID), 
-	constraint fkUserCommentsToComments foreign key (commentID) 
 		references Comments(commentID)
 );
 --
