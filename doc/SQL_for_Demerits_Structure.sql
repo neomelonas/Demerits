@@ -135,7 +135,7 @@ create table StudentHomeroom(
 --
 create table AssignedDemerits(
 	assignedDemeritID int identity(101,1) not null, 
-	adTimestamp smalldatetime not null;
+	adTimestamp smalldatetime not null,
 	teacherID int not null, 
 	constraint pkAssignedDemerits primary key(assignedDemeritID),
 	constraint fkAssignedDemeritsToTeacher foreign key (teacherID) 
