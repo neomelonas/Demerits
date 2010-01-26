@@ -1,209 +1,159 @@
-Insert into User(UserID,username,userPass,userFName,userLName)
-Values (1,llace02,112233,Ryan,shepherd)
-Insert into User(UserID,username,userPass,userFName,userLName)
-Values (2,Dmoore,hello1,Devin,Moore)
-Insert into User(UserID,username,userPass,userFName,userLName)
-Values (3,cturner,cturner1,Christina,Turner)
-Insert into User(UserID,username,userPass,userFName,userLName)
-Values (4,eshepher,eshep1,Edwin,shepherd)
-Insert into User(UserID,username,userPass,userFName,userLName)
-Values (5,Mjordan,Mjor23,Micheal,Jordan)
-Insert into User(UserID,username,userPass,userFName,userLName)
-Values (6,oHansen,ohans1,Ola,Hansen)
-Insert into User(UserID,username,userPass,userFName,userLName)
-Values (7,Tsvends,Tsvends1,Tove,svendson)
-Insert into User(UserID,username,userPass,userFName,userLName)
-Values (8,kPetter,KPetter1,Kari,Pettersen)
-Insert into User(UserID,username,userPass,userFName,userLName)
-Values (9,Tweekes,Tweekes1,Travor,Weekes)
-Insert into User(UserID,username,userPass,userFName,userLName)
-Values (10,NMelous,NMelous123,Neo,Melous)
+use MIS2010Group1;
+ 
+-- DUser data
+insert into DUser(username,userPass,userFName,userLName) values 
+('llace02','slim22','Ryan','Shepherd'),
+('dmoore','hello1','Devin','Moore'),
+('cturner','cturner1','Christina','Turner'),
+('eshepher','eshep1','Edwin','Shepherd'),
+('mjordan','Mjor23','Micheal','Jordan'),
+('ohansen','ohans1','Ola','Hansen'),
+('tsvends','Tsvends1','Tove','Svendson'),
+('tbailey','tbailey','Tommy','Bailey'),
+('dhypes','dhypes','Dan','Hypes'),
+('nmelonas','nmelonas','Neo','Melonas');
 
-Insert into Phone(userID, phoneNum)
-values (1, (321)564-8901)
-Insert into Phone(userID, phoneNum)
-values (2, (562)908-5706)
-Insert into Phone(userID, phoneNum)
-values (3, (321)554-5869)
-Insert into Phone(userID, phoneNum)
-values (4, (342)987-6753)
-Insert into Phone(userID, phoneNum)
-values (5, (321)123-6784)
-Insert into Phone(userID, phoneNum)
-values (6, (675)453-6759)
-Insert into Phone(userID, phoneNum)
-values (7, (567)334-8753)
-Insert into Phone(userID, phoneNum)
-values (8, (321)564-8901)
-Insert into Phone(userID, phoneNum)
-values (9, (246)983-5576)
-Insert into Phone(userID, phoneNum)
-values (10, (724)119-8756)
+-- Phone Data
+insert into Phone(userID, phoneNum) values 
+(1, '3215648901'),
+(2, '5629085706'),
+(3, '3215545869'),
+(4, '3429876753'),
+(5, '3211236784'),
+(6, '6754536759'),
+(7, '5673348753'),
+(8, '3215648901'),
+(9, '2469835576'),
+(10,'7241198756');
 
-insert into Address(addressID, street1, street2, city, state)
-values (1, 1215 mason road, Brooklyn, CO)
-insert into Address(addressID, street1, street2, city, state)
-values (2, 101 High Ground St, Manhattan, NY)
-insert into Address(addressID, street1, street2, city, state)
-values (3, 224 lakeview drvie, Brooklyn, CO)
-insert into Address(addressID, street1, street2, city, state)
-values (4, 1232 apt b fallback Rd, S.Richmond Hill, DE)
-insert into Address(addressID, street1, street2, city, state)
-values (8, 1215 mason road, Brooklyn, CO)
+-- Address Data
+insert into Address(street1, city, state, ZIP) values 
+('1215 Mason Road', 'Brooklyn', 'CO',26505),
+('101 High Ground Street', 'Manhattan', 'NY',26505),
+('224 Lakeview Drive', 'Brooklyn', 'CO',26505),
+('123 Test Street','Testville','WV',26505),
+('123 Elm Street','McLean','VA',26505),
+('54 Possibly Elephantine Road','Baltimore','MD',26505),
+('1215 Mason Road', 'Brooklyn', 'CO',26505),
+('44883 Nottinghats Drive','Places','WA',26505);
+insert into Address(street1, street2, city, state, ZIP) values 
+('1232 Fallback Rd', 'Apartment B', 'S. Richmond Hill', 'DE',26505),
+('577 Oatmeal Terrace','Apartment Q','Morgantown','WV',26505);
 
-insert into UserRoles(roleId,roleName)
-values (1,Teacher)
-insert into UserRoles(roleId,roleName)
-values (2,Student)
-insert into UserRoles(roleId,roleName)
-values (3,Parent)
+-- UserRoles Data
+insert into UserRoles(roleName) values 
+('Teacher'),
+('Student'),
+('Parent');
 
-insert into userRole(userID,roleID)
-values (1,2)
-insert into userRole(userID,roleID)
-values (2,2)
-insert into userRole(userID,roleID)
-values (3,1)
-insert into userRole(userID,roleID)
-values (4,2)
-insert into userRole(userID,roleID)
-values (5,3)
-insert into userRole(userID,roleID)
-values (6,3)
-insert into userRole(userID,roleID)
-values (7,2)
-insert into userRole(userID,roleID)
-values (8,1)
-insert into userRole(userID,roleID)
-values (9,3)
-insert into userRole(userID,roleID)
-values (10,1)
+-- UserRole Data
+insert into UserRole(userID,roleID) values 
+(1,12),
+(2,12),
+(3,11),
+(4,12),
+(5,13),
+(6,13),
+(7,12),
+(8,11),
+(9,13),
+(10,11);
 
-insert into Parent(parentID)
-value  (5)
-insert into Parent(parentID)
-value  (6)
-insert into Parent(parentID)
-value  (9)
 
-insert into Student(studentID,parentID)
-values (2,6)
-insert into Student(studentID,parentID)
-values (4,5)
-insert into Student(studentID,parentID)
-values (1,8)
-insert into Student(studentID,parentID)
-values (7,6)
+-- Parent Data
+insert into Parent(parentID) values 
+(5),
+(6),
+(9);
 
-insert into Teacher(teacherID)
-value  (3)
-insert into Teacher(teacherID)
-value  (8)
-insert into Teacher(teacherID)
-value  (10)
+-- Student Data
+insert into Student(studentID,parentID) values 
+(1,9),
+(2,6),
+(4,5),
+(7,6);
 
-insert into Homeroom (homeroomID,classNumber,teacherID)
-values (1, Math101, 3)
-insert into Homeroom (homeroomID,classNumber,teacherID)
-values (2, Freshman English , 8)
-insert into Homeroom (homeroomID,classNumber,teacherID)
-values (3, Spanish1, 10)
-insert into Homeroom (homeroomID, classNumber,teacherID0
-Values (4, Spanish2, 10)
+-- Teacher Data
+insert into Teacher(teacherID) values 
+(3),
+(8),
+(10);
 
-insert into StudentHomeroom (studentID, homeroomID)
-Values (2,3)
-insert into StudentHomeroom (studentID, homeroomID)
-Values (4,1)
-insert into StudentHomeroom (studentID, homeroomID)
-Values (1,4)
-insert into StudentHomeroom (studentID, homeroomID)
-Values (7,2)
 
-insert into AssignedDemerits (assignedDemeritID,demeritDate,demeritTime,teacherID)
-values (7, 11/1/09, 1:00 PM, 10)
-insert into AssignedDemerits(assignedDemeritID,demeritDate,demeritTime,teacherID)
-Values (2,11/1/09, 9:30 AM, 3)
-insert into AssignedDemerits (assignedDemeritID,demeritDate,demeritTime,teacherID)
-values (4, 08/1/09, 2:10 PM, 10)
-insert into AssignedDemerits (assignedDemeritID,demeritDate,demeritTime,teacherID)
-values (7, 11/1/09, 8:35 AM, 8)
-insert into AssignedDemerits (assignedDemeritID,demeritDate,demeritTime,teacherID)
-values (6, 12/11/09, 12:00 PM, 8)
-insert into AssignedDemerits (assignedDemeritID,demeritDate,demeritTime,teacherID)
-values (5, 05/10/09, 1:00 PM, 3)
-insert into AssignedDemerits (assignedDemeritID,demeritDate,demeritTime,teacherID)
-values (1, 01/17/10, 11:00 AM, 8)
+-- Homeroom Data
+insert into Homeroom (homeroomID,classNumber,teacherID) values 
+(1,4100, 8), 
+(2,2302, 3),
+(3,3601, 10),
+(4,3602, 10);
 
-insert into Demerits (demeritID,assignedDemeritID)
-values (3, 7)
-insert into Demerits (demeritID,assignedDemeritID)
-values (4, 2)
-insert into Demerits (demeritID,assignedDemeritID)
-values (1, 4)
-insert into Demerits (demeritID,assignedDemeritID)
-values (2, 7)
-insert into Demerits (demeritID,assignedDemeritID)
-values (5, 6)
-insert into Demerits (demeritID,assignedDemeritID)
-values (8, 5)
-insert into Demerits (demeritID,assignedDemeritID)
-values (6, 1)
+-- StudentHomroom Data
+insert into StudentHomeroom (studentID, homeroomID) values
+(2,3),
+(4,1),
+(1,4),
+(7,2);
 
-insert into DemeritList (demeritID, assignedDemeritID)
-values (1,4)
-insert into DemeritList (demeritID, assignedDemeritID)
-values (2,7)
-insert into DemeritList (demeritID, assignedDemeritID)
-values (3,7)
-insert into DemeritList (demeritID, assignedDemeritID)
-values (4,2)
-insert into DemeritList (demeritID, assignedDemeritID)
-values (5,6)
-insert into DemeritList (demeritID, assignedDemeritID)
-values (6,1)
-insert into DemeritList (demeritID, assignedDemeritID)
-values (8,5)
+-- AssignedDemerits Data
+insert into AssignedDemerits (adTimestamp,teacherID) values 
+('11/1/09 13:00', 10),
+('11/1/09 09:30', 8),
+('08/1/09 14:10', 10),
+('11/1/09 08:35', 3),
+('12/11/09 12:00', 3),
+('05/10/09 13:00', 8),
+('01/17/10 11:00', 10);
 
-insert into UserDemerits (assignedDemeritId, StudentID)
-Values (1,8)
-insert into UserDemerits (assignedDemeritId, StudentID)
-Values (2,2)
-insert into UserDemerits (assignedDemeritId, StudentID)
-Values (3,4)
-insert into UserDemerits (assignedDemeritId, StudentID)
-Values (4,1)
-insert into UserDemerits (assignedDemeritId, StudentID)
-Values (5,8)
-insert into UserDemerits (assignedDemeritId, StudentID)
-Values (6,2)
-insert into UserDemerits (assignedDemeritId, StudentID)
-Values (8,1)
+--select * from AssignedDemerits
 
-insert into Dentention (detentionID, detentionDate)
-values (2, 12/17/09)
-insert into Dentention (detentionID, detentionDate)
-values (11, 11/17/09)
-insert into Dentention (detentionID, detentionDate)
-values (4, 8/01/09)
-insert into Dentention (detentionID, detentionDate)
-values (1, 1/24/10)
+-- Demerits Data
+insert into Demerits (demeritID,demeritDescription) values 
+(1, 'Electronics'),
+(2, 'Candy'),
+(3, 'Behavior'),
+(4, 'Class Preparation'),
+(5,' Drugs');
 
-insert into StudentDetention (studentID, detentionID)
-Values (1,11)
-insert into StudentDetention (studentID, detentionID)
-Values (2,1)
-insert into StudentDetention (studentID, detentionID)
-Values (4,2)
-insert into StudentDetention (studentID, detentionID)
-Values (8,4)
+-- DemeritList Data
+insert into DemeritList (demeritID, assignedDemeritID) values 
+(1,104),
+(2,107),
+(3,107),
+(4,102),
+(5,106),
+(2,104),
+(5,105);
 
-insert into StudentDemeritDetention (StudentID, assignedDemeritID, detentionID)
-Values (1, 5, 11)
-insert into StudentDemeritDetention (StudentID, assignedDemeritID, detentionID)
-Values (2, 8, 1)
-insert into StudentDemeritDetention (StudentID, assignedDemeritID, detentionID)
-Values (3, 6, 2)
-insert into StudentDemeritDetention (StudentID, assignedDemeritID, detentionID)
-Values (4, 4, 4)
+-- UserDemerits Data
+insert into UserDemerits (assignedDemeritId, StudentID) values 
+(104,7),
+(102,2),
+(103,4),
+(104,1),
+(105,7),
+(106,2),
+(107,1);
 
+-- Detention Data
+insert into Detention (detentionID, detentionDate) values 
+(1, '12/17/09'),
+(2, '11/17/09'),
+(3, '08/01/09'),
+(4, '01/21/10'),
+(5, '01/24/10');
+
+-- StudentDetention Data
+insert into StudentDetention (studentID, detentionID) values 
+(1,1),
+(2,2),
+(4,3),
+(7,4),
+(7,5);
+
+-- StudentDemeritDetention Data
+insert into StudentDemeritDetention (studentID, assignedDemeritID, detentionID) values 
+(1, 105, 1),
+(2, 107, 1),
+(7, 106, 2),
+(4, 104, 4),
+(4, 103, 5);
