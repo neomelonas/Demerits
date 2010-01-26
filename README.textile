@@ -20,9 +20,10 @@ h2. DEFAULT BRANCH: +master+ -blueprint_Demerits-
 ## -Fix End Of Term errors-
 ## 
 # SQL
-## Code database structure
-## Normalize, etc., said database
-## Create DB dump to run *Demerits* locally
+## -Code database structure-
+## -Normalize, etc., said database-
+## -Create DB dump to run *Demerits* locally-
+## Make it work, for the love of toast.
 # OTHER
 ## -Get group to fork-
 # Future Thoughts
