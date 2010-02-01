@@ -57,14 +57,16 @@ insert into UserRole(userID,roleID) values
 (7,12),
 (8,11),
 (9,13),
-(10,11);
+(10,11),
+(10,13);
 
 
 -- Parent Data
 insert into Parent(parentID) values 
 (5),
 (6),
-(9);
+(9),
+(10);
 
 -- Student Data
 insert into Student(studentID,parentID) values 
