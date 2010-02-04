@@ -1,5 +1,5 @@
 --
-use MIS2010Group1
+use MISGroup1
 --
 /*
 If you need to re-create the database, drop tables in the 
@@ -8,6 +8,7 @@ following order, or else superbreaking happens.
 drop table StudentDemeritDetention;
 drop table StudentDetention;
 drop table Detention;
+drop table UserComments;
 drop table Comments;
 drop table StudentHomeroom;
 drop table Homeroom;
@@ -53,14 +54,12 @@ create table Address(
 	city varchar(40) not null, 
 	state char(2) not null,
 	/*state enum(
-		
-'AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','MD','MA','MI','MN','MS','MO','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'
+		'AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','MD','MA','MI','MN','MS','MO','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'
 	) not null, */
 	ZIP int not null,
 	constraint pkAddress primary key(addressID),
 	constraint ckAddressState CHECK 
-		(state in 
-('AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','MD','MA','MI','MN','MS','MO','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'))
+		(state in ('AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','MD','MA','MI','MN','MS','MO','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'))
 );
 --
 create table UserAddress(
@@ -116,7 +115,7 @@ create table Teacher(
 );
 --
 create table Homeroom(
-	homeroomID int identity(1,1) not null,
+	homeroomID int not null,
 	classNumber int not null,
 	teacherID int not null,
 	constraint pkHomeroom primary key(homeroomID),
@@ -144,7 +143,7 @@ create table AssignedDemerits(
 );
 --
 create table Demerits(
-	demeritID int identity(1,1) not null, 
+	demeritID int not null, 
 	demeritDescription varchar(50) not null,
 	constraint pkDemerits primary key(demeritID)
 );
@@ -152,46 +151,38 @@ create table Demerits(
 create table DemeritList(
 	demeritID int not null,
 	assignedDemeritID int not null,
-	constraint pkDemeritList primary key(demeritID, 
-assignedDemeritID), 
+	constraint pkDemeritList primary key(demeritID, assignedDemeritID), 
 	constraint fkDemeritListToDemerits foreign  key (demeritID) 
 		references Demerits(demeritID), 
-	constraint fkDemeritListToAssignedDemerits foreign key 
-(assignedDemeritID) 
+	constraint fkDemeritListToAssignedDemerits foreign key (assignedDemeritID) 
 		references AssignedDemerits(assignedDemeritID)
 );
 --
 create table UserDemerits(
 	assignedDemeritID int not null, 
 	studentID int not null, 
-	constraint pkUserDemerits primary key(assignedDemeritID, 
-studentID), 
-	constraint fkUserDemeritsToAssignedDemerits foreign key 
-(assignedDemeritID) 
+	constraint pkUserDemerits primary key(assignedDemeritID, studentID), 
+	constraint fkUserDemeritsToAssignedDemerits foreign key (assignedDemeritID) 
 		references AssignedDemerits(assignedDemeritID), 
 	constraint fkUserDemeritsToStudent foreign key (studentID) 
 		references Student(studentID)
 );
 --
 create table Comments(
-	commentID int identity(1,1) not null,
+	commentID int not null,
 	commentDesc text not null,
 	assignedDemeritID int not null, 
 	commentTimestamp smalldatetime not null,
-	userID int not null,
-	commentLink int default null, 
+	commentLink int not null, 
 	constraint pkComments primary key(commentID),
-	constraint fkCommentsToDUser foreign key (userID)
-		references DUser(userID),
-	constraint fkCommentsToAssignedDemerits foreign key 
-(assignedDemeritID) 
+	constraint fkCommentsToAssignedDemerits foreign key (assignedDemeritID) 
 		references AssignedDemerits(assignedDemeritID), 
 	constraint fkCommentsToComments foreign key (commentLink) 
 		references Comments(commentID)
 );
 --
 create table Detention(
-	detentionID int identity(1,1) not null,
+	detentionID int not null,
 	detentionDate date not null,
 	constraint pkDetention primary key(detentionID)
 );
@@ -200,12 +191,10 @@ create table StudentDetention(
 	studentID int not null, 
 	detentionID int not null,
 	served bit not null default 0,
-	constraint pkStudentDetention primary key(studentID, 
-detentionID), 
+	constraint pkStudentDetention primary key(studentID, detentionID), 
 	constraint fkStudentDetentionToStudent foreign key (studentID)
 		references Student(studentID), 
-	constraint fkStudentDetentionToDetention foreign key 
-(detentionID) 
+	constraint fkStudentDetentionToDetention foreign key (detentionID) 
 		references Detention(detentionID)
 );
 --
@@ -213,16 +202,12 @@ create table StudentDemeritDetention(
 	studentID int not null,
 	assignedDemeritID int not null,
 	detentionID int not null, 
-	constraint pkStudentDemeritDetention primary key(studentID, 
-assignedDemeritID, detentionID), 
-	constraint fkStudentDemeritDetentionToStudent foreign key 
-(studentID) 
+	constraint pkStudentDemeritDetention primary key(studentID, assignedDemeritID, detentionID), 
+	constraint fkStudentDemeritDetentionToStudent foreign key (studentID) 
 		references Student(studentID), 
-	constraint fkStudentDemeritDetentionToAssignedDemerits foreign 
-key (assignedDemeritID) 
+	constraint fkStudentDemeritDetentionToAssignedDemerits foreign key (assignedDemeritID) 
 		references AssignedDemerits(assignedDemeritID), 
-	constraint fkStudentDemeritDetentionToDetention foreign key 
-(detentionID) 
+	constraint fkStudentDemeritDetentionToDetention foreign key (detentionID) 
 		references Detention(detentionID)
 );
 --
