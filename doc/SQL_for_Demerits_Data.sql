@@ -1,4 +1,4 @@
-use MIS2010Group1;
+use MISGroup1;
  
 -- DUser data
 insert into DUser(username,userPass,userFName,userLName) values 

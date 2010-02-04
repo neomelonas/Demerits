@@ -1,5 +1,5 @@
 --
-use MIS2010Group1
+use MISGroup1
 --
 /*
 If you need to re-create the database, drop tables in the 
