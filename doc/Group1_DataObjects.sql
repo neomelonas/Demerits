@@ -62,12 +62,14 @@ GO
 
 CREATE PROCEDURE procGetComments
 (
-	@assignedDemeritID int
+	@assignedDemeritID int,
+	@userID int
 )
 AS BEGIN
 	SELECT commentID, commentDesc, commentTimestamp, userID
 	FROM Comments 
-	WHERE @assignedDemeritID=assignedDemeritID
+	WHERE assignedDemeritID = IsNull(@assignedDemeritID, assignedDemeritID)
+	AND userID = IsNull(@userID, userID)
 	ORDER BY commentTimestamp;
 	--Written By: Tommy
 END;
