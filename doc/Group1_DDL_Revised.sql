@@ -1,5 +1,5 @@
 --
-use MISGroup1
+use MIS2010Group1
 --
 /*
 If you need to re-create the database, drop tables in the 
@@ -8,13 +8,11 @@ following order, or else superbreaking happens.
 drop table StudentDemeritDetention;
 drop table StudentDetention;
 drop table Detention;
-drop table UserComments;
 drop table Comments;
 drop table StudentHomeroom;
 drop table Homeroom;
 drop table UserAddress;
 drop table Address;
-drop table UserDemerits;
 drop table DemeritList;
 drop table AssignedDemerits;
 drop table Demerits;
@@ -115,7 +113,7 @@ create table Teacher(
 );
 --
 create table Homeroom(
-	homeroomID int not null,
+	homeroomID int identity(1,1) not null,
 	classNumber int not null,
 	teacherID int not null,
 	constraint pkHomeroom primary key(homeroomID),
@@ -137,13 +135,16 @@ create table AssignedDemerits(
 	assignedDemeritID int identity(101,1) not null, 
 	adTimestamp smalldatetime not null,
 	teacherID int not null, 
+	studentID int not null,
 	constraint pkAssignedDemerits primary key(assignedDemeritID),
 	constraint fkAssignedDemeritsToTeacher foreign key (teacherID) 
-		references Teacher(teacherID)
+		references Teacher(teacherID),
+	constraint fkAssignedDemeritsToStudent foreign key (studentID) 
+		references Student(studentID)
 );
 --
 create table Demerits(
-	demeritID int not null, 
+	demeritID int identity(1,1) not null, 
 	demeritDescription varchar(50) not null,
 	constraint pkDemerits primary key(demeritID)
 );
@@ -158,23 +159,16 @@ create table DemeritList(
 		references AssignedDemerits(assignedDemeritID)
 );
 --
-create table UserDemerits(
-	assignedDemeritID int not null, 
-	studentID int not null, 
-	constraint pkUserDemerits primary key(assignedDemeritID, studentID), 
-	constraint fkUserDemeritsToAssignedDemerits foreign key (assignedDemeritID) 
-		references AssignedDemerits(assignedDemeritID), 
-	constraint fkUserDemeritsToStudent foreign key (studentID) 
-		references Student(studentID)
-);
---
 create table Comments(
-	commentID int not null,
+	commentID int identity(1,1) not null,
 	commentDesc text not null,
 	assignedDemeritID int not null, 
 	commentTimestamp smalldatetime not null,
-	commentLink int not null, 
+	userID int not null,
+	commentLink int default null, 
 	constraint pkComments primary key(commentID),
+	constraint fkCommentsToDUser foreign key (userID)
+		references DUser(userID),
 	constraint fkCommentsToAssignedDemerits foreign key (assignedDemeritID) 
 		references AssignedDemerits(assignedDemeritID), 
 	constraint fkCommentsToComments foreign key (commentLink) 
@@ -182,7 +176,7 @@ create table Comments(
 );
 --
 create table Detention(
-	detentionID int not null,
+	detentionID int identity(1,1) not null,
 	detentionDate date not null,
 	constraint pkDetention primary key(detentionID)
 );

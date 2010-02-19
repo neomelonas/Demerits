@@ -97,14 +97,14 @@ insert into StudentHomeroom (studentID, homeroomID) values
 (7,2);
 
 -- AssignedDemerits Data
-insert into AssignedDemerits (adTimestamp,teacherID) values 
-('11/1/09 13:00', 10),
-('11/1/09 09:30', 8),
-('08/1/09 14:10', 10),
-('11/1/09 08:35', 3),
-('12/11/09 12:00', 3),
-('05/10/09 13:00', 8),
-('01/17/10 11:00', 10);
+insert into AssignedDemerits (adTimestamp,teacherID, studentID) values 
+('11/1/09 13:00', 10, 7),
+('11/1/09 09:30', 8, 2),
+('08/1/09 14:10', 10, 4),
+('11/1/09 08:35', 3, 1),
+('12/11/09 12:00', 3, 7),
+('05/10/09 13:00', 8, 2),
+('01/17/10 11:00', 10, 1);
 
 --select * from AssignedDemerits
 
@@ -126,16 +126,6 @@ insert into DemeritList (demeritID, assignedDemeritID) values
 (2,104),
 (5,105);
 
--- UserDemerits Data
-insert into UserDemerits (assignedDemeritId, StudentID) values 
-(104,7),
-(102,2),
-(103,4),
-(104,1),
-(105,7),
-(106,2),
-(107,1);
-
 -- Detention Data
 insert into Detention (detentionDate) values 
 ('12/17/09'),
@@ -153,8 +143,7 @@ insert into StudentDetention (studentID, detentionID) values
 (7,5);
 
 -- StudentDemeritDetention Data
-insert into StudentDemeritDetention (studentID, assignedDemeritID, 
-detentionID) values 
+insert into StudentDemeritDetention (studentID, assignedDemeritID, detentionID) values 
 (1, 105, 1),
 (2, 107, 1),
 (7, 106, 2),
@@ -162,11 +151,9 @@ detentionID) values
 (4, 103, 5);
 
 -- Comments Data
-insert into Comments (commentDesc, assignedDemeritID, commentTimestamp, 
-userID, commentLink) values
+insert into Comments (commentDesc, assignedDemeritID, commentTimestamp, userID, commentLink) values
 ('This is unfair!', 104, '11/11/09 13:00', 1, null),
 ('Why?', 102, '11/23/09 13:00', 6, null),
 ('This is my user comment', 106, '01/20/10 13:00', 2, null),
 ('Thanks for the vacation', 103, '01/22/09 13:00', 4, null),
 ('Thanks for the vacation', 103, '01/22/09 13:03', 5, 4);
-
