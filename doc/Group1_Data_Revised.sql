@@ -139,8 +139,9 @@ insert into StudentDetention (studentID, detentionID) values
 (1,1),
 (2,2),
 (4,3),
-(7,4),
-(7,5);
+(7,4);
+insert into StudentDetention (studentID, detentionID, served) values
+(7,5,1);
 
 -- StudentDemeritDetention Data
 insert into StudentDemeritDetention (studentID, assignedDemeritID, detentionID) values 

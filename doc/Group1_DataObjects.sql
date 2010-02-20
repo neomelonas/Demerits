@@ -34,28 +34,28 @@ SELECT * FROM fnUserList('Teacher');
 
 GO
 
-CREATE FUNCTION fnGetStudentDetentions
+alter FUNCTION fnGetStudentDetentions
 (
-	@studentID int,
+	@studentID int = NULL,
 	@servedStatus bit = NULL
 )
-RETURNS @tblStudentDetentions TABLE (detentionID int, detentionDate date, demeritID int)
+RETURNS @tblStudentDetentions TABLE (studentID int, detentionID int, detentionDate date, demeritID int, served bit)
 AS BEGIN
 	INSERT INTO @tblStudentDetentions 
-	SELECT d.detentionID, d.detentionDate, ad.assignedDemeritID 
+	SELECT sd.studentID, d.detentionID, d.detentionDate, ad.assignedDemeritID, sd.served
 	FROM DUser u
 	INNER JOIN StudentDetention sd ON u.userID=sd.studentID
 	INNER JOIN Detention d ON sd.detentionID=d.detentionID
 	INNER JOIN StudentDemeritDetention sdd ON d.detentionID=sdd.detentionID
 	INNER JOIN AssignedDemerits ad ON sdd.assignedDemeritID=ad.assignedDemeritID
-	WHERE sd.studentID=@studentID AND sd.served= IsNull(@servedStatus, served);
+	WHERE sd.studentID= IsNull(@studentID, sd.studentID) AND sd.served= IsNull(@servedStatus, served);
 	RETURN;
 	
 	--Written By: Neo
 END;
 
 /*
-select * from fnGetStudentDetentions(7,null);
+select * from fnGetStudentDetentions(null,null);
 */
 
 GO
@@ -165,15 +165,13 @@ AS BEGIN
 END;
 
 /*
-select * from fnGetStudentDemeritList(1);
+select * from fnGetStudentDemeritList(7);
 */
 
 GO 
 
 CREATE FUNCTION fnGetAllDemerits
-(
-	@enterStudentID int = null
-)
+()
 RETURNS @tblGetDemerits TABLE (demeritID int, demeritDesc varchar(50))
 AS BEGIN
 	INSERT INTO @tblGetDemerits 
