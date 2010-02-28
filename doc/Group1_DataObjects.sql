@@ -1,11 +1,16 @@
 /*
 DROP FUNCTION fnUserList;
+DROP PROCEDURE procUserList;
 DROP FUNCTION fnGetStudentDetentions;
+DROP PROCEDURE procGetStudentDetentions;
 DROP PROCEDURE procGetComments;
 DROP PROCEDURE procAddNewComment;
 DROP FUNCTION fnGetDemeritInformation;
+DROP PROCEDURE procGetDemeritInformation;
 DROP FUNCTION fnGetStudentDemeritList;
+DROP PROCEDURE procGetStudentDemeritList;
 DROP FUNCTION fnGetAllDemerits;
+DROP PROCEDURE procGetAllDemerits;
 DROP PROCEDURE procADtoDemeritList;
 DROP PROCEDURE procAddAssignedDemerit;
 */
@@ -21,7 +26,7 @@ AS BEGIN
 	FROM DUser DU
 	INNER JOIN UserRole UR ON DU.userID=UR.userID
 	INNER JOIN UserRoles URS ON UR.roleID=URS.roleID
-	WHERE URS.roleName=@role;
+	WHERE URS.roleName LIKE '%@role%';
 	
 	RETURN;
 	
@@ -34,7 +39,20 @@ SELECT * FROM fnUserList('Teacher');
 
 GO
 
-alter FUNCTION fnGetStudentDetentions
+CREATE PROCEDURE procUserList
+(
+	@role varchar(20)
+)
+AS BEGIN
+	SELECT * FROM fnUserList(@role);
+END;
+/*
+execute procUserList @role='Teacher';
+*/
+
+GO
+
+CREATE FUNCTION fnGetStudentDetentions
 (
 	@studentID int = NULL,
 	@servedStatus bit = NULL
@@ -56,6 +74,21 @@ END;
 
 /*
 select * from fnGetStudentDetentions(null,null);
+*/
+
+GO
+
+CREATE PROCEDURE procGetStudentDetentions
+(
+	@studentID int = NULL,
+	@servedStatus bit = NULL
+)
+AS BEGIN
+	SELECT * FROM fnGetStudentDetentions(@studentID, @servedStatus);
+END;
+
+/*
+execute procGetStudentDetentions @studentID=null, @servedStatus=null;
 */
 
 GO
@@ -150,6 +183,20 @@ select * from fnGetDemeritInformation('104');
 
 GO
 
+CREATE PROCEDURE procGetDemeritInformation
+(
+	@demeritID int
+)
+AS BEGIN 
+	SELECT * FROM fnGetDemeritInformation(@demeritID);
+END;
+
+/*
+execute procGetDemeritInformation('104');
+*/
+
+GO
+
 CREATE FUNCTION fnGetStudentDemeritList
 (
 	@userID int = NULL
@@ -172,8 +219,21 @@ select * from fnGetStudentDemeritList(7);
 
 GO 
 
+CREATE PROCEDURE procGetStudentDemeritList
+(
+	@userID int = null
+)
+AS BEGIN
+	SELECT * FROM fnGetStudentDemeritList(@userID);
+END;
+
+/*
+execute procGetStudentDemeritList @userID=7;
+*/
+
+GO
+
 CREATE FUNCTION fnGetAllDemerits
-()
 RETURNS @tblGetDemerits TABLE (demeritID int, demeritDesc varchar(50))
 AS BEGIN
 	INSERT INTO @tblGetDemerits 
@@ -185,6 +245,18 @@ END;
  
 /*
 select * from fnGetAllDemerits();
+*/
+
+GO
+
+CREATE PROCEDURE procGetAllDemerits
+()
+AS BEGIN
+	SELECT * FROM fnGetAllDemerits();
+END;
+
+/*
+execute procGetAllDemerits;
 */
 
 GO
