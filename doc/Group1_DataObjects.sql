@@ -13,6 +13,7 @@ DROP FUNCTION fnGetAllDemerits;
 DROP PROCEDURE procGetAllDemerits;
 DROP PROCEDURE procADtoDemeritList;
 DROP PROCEDURE procAddAssignedDemerit;
+DROP PROCEDURE procDeleteAssignedDemerit;
 */
 
 CREATE FUNCTION fnUserList
@@ -26,7 +27,7 @@ AS BEGIN
 	FROM DUser DU
 	INNER JOIN UserRole UR ON DU.userID=UR.userID
 	INNER JOIN UserRoles URS ON UR.roleID=URS.roleID
-	WHERE URS.roleName LIKE '%@role%';
+	WHERE URS.roleName LIKE '%'+@role+'%';
 	
 	RETURN;
 	
@@ -95,8 +96,8 @@ GO
 
 CREATE PROCEDURE procGetComments
 (
-	@assignedDemeritID int,
-	@userID int
+	@assignedDemeritID int = null,
+	@userID int = null
 )
 AS BEGIN
 	SELECT commentID, commentDesc, commentTimestamp, userID
@@ -233,7 +234,7 @@ execute procGetStudentDemeritList @userID=7;
 
 GO
 
-CREATE FUNCTION fnGetAllDemerits
+CREATE FUNCTION fnGetAllDemerits ()
 RETURNS @tblGetDemerits TABLE (demeritID int, demeritDesc varchar(50))
 AS BEGIN
 	INSERT INTO @tblGetDemerits 
@@ -250,7 +251,6 @@ select * from fnGetAllDemerits();
 GO
 
 CREATE PROCEDURE procGetAllDemerits
-()
 AS BEGIN
 	SELECT * FROM fnGetAllDemerits();
 END;
@@ -359,4 +359,38 @@ declare @successfullinsert bit, @errorMessages varchar(100);
 execute @successfullinsert = procAddAssignedDemerit @teacherID=3, @studentID=1, @errorMessage = @errorMessages output;
 print @successfullinsert;
 print @errorMessages;
+*/
+
+GO
+
+CREATE PROCEDURE procDeleteAssignedDemerit
+(
+    @teacherID int,
+    @studentID int,
+    @assignedDemeritID int
+)
+AS BEGIN
+	DECLARE @success bit;
+	SET @success = 1;
+
+	DELETE FROM AssignedDemerits
+	WHERE teacherID = @teacherID
+	AND studentID =@studentID
+	AND assignedDemeritID = @assignedDemeritID;
+	
+	DELETE FROM DemeritList
+	WHERE assignedDemeritID = @assignedDemeritID;
+
+	IF (@@ROWCOUNT = 0)
+	SET @success = 0;
+
+	RETURN @success
+	--Written by: Dan
+END;
+
+/*
+declare @success bit
+
+execute @success = procDeleteAssignedDemerit @teacherID=3, @studentID=1, @assignedDemeritID=117;
+print @success
 */
