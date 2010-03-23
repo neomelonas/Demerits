@@ -1,3 +1,5 @@
+use MIS2010Group1;
+
 /*
 DROP FUNCTION fnUserList;
 DROP PROCEDURE procUserList;
